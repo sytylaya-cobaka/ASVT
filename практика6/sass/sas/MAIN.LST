@@ -1,0 +1,60 @@
+MAIN                                                                                                          PAGE 1
+
+                       1    $MOD51
+                       2    
+0000                   3    ORG 0000h
+0000 020003            4        LJMP START
+                       5    
+0003                   6    START:
+0003 7850              7        MOV R0, #50h
+0005 7F0A              8        MOV R7, #10
+0007 7441              9        MOV A, #41h
+0009                  10    FILL:
+0009 F6               11        MOV @R0, A
+000A 08               12        INC R0
+000B 04               13        INC A
+000C DFFB             14        DJNZ R7, FILL
+                      15    
+000E 758920           16        MOV TMOD, #20h
+0011 758780           17        MOV PCON, #80h
+0014 758DFD           18        MOV TH1, #0FDh
+0017 758BFD           19        MOV TL1, #0FDh
+001A D28E             20        SETB TR1
+                      21    
+001C 7598C0           22        MOV SCON, #0C0h
+001F D29B             23        SETB TB8
+0021 C299             24        CLR TI
+                      25    
+0023 7850             26        MOV R0, #50h
+0025 7F0A             27        MOV R7, #10
+0027                  28    SEND_LOOP:
+0027 E6               29        MOV A, @R0
+0028 F599             30        MOV SBUF, A
+                      31    
+002A                  32    WAIT_TI:
+002A 3099FD           33        JNB TI, WAIT_TI
+002D C299             34        CLR TI
+                      35    
+002F 08               36        INC R0
+0030 DFF5             37        DJNZ R7, SEND_LOOP
+                      38    
+0032 80FE             39        SJMP $
+                      40    
+                      41    END
+
+VERSION 1.2k ASSEMBLY COMPLETE, 0 ERRORS FOUND
+MAIN                                                                                                          PAGE 2
+
+FILL . . . . . . . . . . . . . .  C ADDR  0009H  
+PCON . . . . . . . . . . . . . .  D ADDR  0087H  PREDEFINED  
+SBUF . . . . . . . . . . . . . .  D ADDR  0099H  PREDEFINED  
+SCON . . . . . . . . . . . . . .  D ADDR  0098H  PREDEFINED  
+SEND_LOOP. . . . . . . . . . . .  C ADDR  0027H  
+START. . . . . . . . . . . . . .  C ADDR  0003H  
+TB8. . . . . . . . . . . . . . .  B ADDR  009BH  PREDEFINED  
+TH1. . . . . . . . . . . . . . .  D ADDR  008DH  PREDEFINED  
+TI . . . . . . . . . . . . . . .  B ADDR  0099H  PREDEFINED  
+TL1. . . . . . . . . . . . . . .  D ADDR  008BH  PREDEFINED  
+TMOD . . . . . . . . . . . . . .  D ADDR  0089H  PREDEFINED  
+TR1. . . . . . . . . . . . . . .  B ADDR  008EH  PREDEFINED  
+WAIT_TI. . . . . . . . . . . . .  C ADDR  002AH  
