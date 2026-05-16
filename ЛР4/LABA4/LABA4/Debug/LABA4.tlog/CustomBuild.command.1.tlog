@@ -1,0 +1,5 @@
+^C:\УЧЕБА\3 КУРС\6 СЕМЕСТР\АСВТ\ЛАБЫ\ЛР4\LABA4\LABA4\FUNCS.PYX
+echo Создание funcs.obj из funcs.pyx
+"C:\Users\sytylaya_cobaka\AppData\Local\Programs\Python\Python311-32\python.exe" -m cython "C:\учеба\3 курс\6 семестр\асвт\ЛАБЫ\ЛР4\LABA4\LABA4\funcs.pyx" -3 -o "C:\учеба\3 курс\6 семестр\асвт\ЛАБЫ\ЛР4\LABA4\LABA4\funcs_cython_temp.c"
+cl /nologo /c /TC /MD /U_DEBUG "C:\учеба\3 курс\6 семестр\асвт\ЛАБЫ\ЛР4\LABA4\LABA4\funcs_cython_temp.c" /I"C:\Users\sytylaya_cobaka\AppData\Local\Programs\Python\Python311-32\include" /Fo"C:\учеба\3 курс\6 семестр\асвт\ЛАБЫ\ЛР4\LABA4\LABA4\funcs.obj"
+dir "C:\учеба\3 курс\6 семестр\асвт\ЛАБЫ\ЛР4\LABA4\LABA4\funcs.obj"
